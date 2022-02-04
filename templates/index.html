@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Home 
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Stock</th>
+      <th scope="col">Share Count</th> 
+      <th scope="col">Current Price</th>
+      <th scope="col">Total Value</th>
+     </tr>
+  </thead>
+  {% for data in INFO %}
+  <tr>
+    <td>{{data.stock_name}}</td>
+    <td>{{data['SUM(amount)']}}</td>
+    <td>{{data['price'] | usd}}</td>
+    <td>{{ (data['price'] * data['SUM(amount)']) | usd}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<div class="row">
+    <!-- <div class="col"></div> -->
+    <div class="col-8"></div>
+    <div class="col">
+      <h5>Current cash: {{cash | usd}} </h5>
+      <h5>Total: {{total_cash | usd}} </h5>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   History 
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Stock</th>
+      <th scope="col">Action</th> 
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Total Value</th>
+     </tr>
+  </thead>
+{% for data in datas %}
+  <tr>
+    <td>{{data.stock_name}}</td>
+    <td>{{data['action']}}</td>
+    <td>{{data['date']}}</td>
+    <td>{{data['amount']}}</td>
+    <td>{{data['total_price'] | usd}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-8"></div>
+    <div class="col">
+    </div>
+  </div>
+
+{% endblock %}
